@@ -1,0 +1,91 @@
+# Conditional Statements — Linux vs Python
+
+## 1. What are Conditional Statements?
+Conditional statements control the flow of execution based on whether a condition is true or false.
+They are used to make decisions in programs.
+
+---
+
+## 2. Bash Conditional Statements
+
+### Syntax
+if [ condition ]
+then
+    # commands
+elif [ condition ]
+then
+    # commands
+else
+    # commands
+fi
+
+### Comparison Operators
+| Type | Operator | Example | Description |
+|------|-----------|----------|-------------|
+| Numeric | -eq | [ $a -eq $b ] | equal |
+| Numeric | -ne | [ $a -ne $b ] | not equal |
+| Numeric | -gt | [ $a -gt $b ] | greater than |
+| Numeric | -lt | [ $a -lt $b ] | less than |
+| Numeric | -ge | [ $a -ge $b ] | greater or equal |
+| Numeric | -le | [ $a -le $b ] | less or equal |
+| String | = | [ "$a" = "$b" ] | equal |
+| String | != | [ "$a" != "$b" ] | not equal |
+| File | -e | [ -e file.txt ] | file exists |
+| File | -d | [ -d dir ] | directory exists |
+| File | -f | [ -f file ] | file exists and is regular |
+
+---
+
+## 3. Python Conditional Statements
+
+### Syntax
+if condition:
+    statements
+elif condition:
+    statements
+else:
+    statements
+
+### Comparison Operators
+| Operator | Description | Example |
+|-----------|--------------|----------|
+| == | equal to | a == b |
+| != | not equal | a != b |
+| > | greater than | a > b |
+| < | less than | a < b |
+| >= | greater or equal | a >= b |
+| <= | less or equal | a <= b |
+| and, or, not | logical operators | if a > 0 and b < 5 |
+
+---
+
+## 4. Comparison: Bash vs Python
+
+| Feature | Bash | Python |
+|----------|------|--------|
+| Syntax | `if [ $a -gt $b ]` | `if a > b:` |
+| End block | `fi` | Indentation |
+| File checks | `-e, -f, -d` | `os.path.exists()` |
+| Boolean logic | `&&`, `||`, `!` | `and`, `or`, `not` |
+| Strings | `=` / `!=` | `==` / `!=` |
+
+---
+
+## 5. Core Concepts
+- Simple `if`
+- `if-else`
+- `if-elif-else`
+- Nested conditions
+- Numeric comparison
+- String comparison
+- File and directory checks
+- Logical operators (and, or, not)
+
+---
+
+## 6. Real-World Use Cases
+- Login validation
+- File existence check before writing
+- Service status check in Linux
+- Input validation in scripts
+- Decision making in backend code

@@ -1,0 +1,86 @@
+======================================
+            LOGGING IN BASH
+======================================
+
+Logging means recording important events, information, or errors during script execution.
+
+It helps in debugging, monitoring, and understanding script behavior — just like Python’s `logging` module.
+
+---------------------------------------
+1️⃣ WHY LOGGING IS IMPORTANT
+---------------------------------------
+✅ Helps track what your script did
+✅ Useful for debugging and auditing
+✅ Required in automation, servers, and cron jobs
+
+---------------------------------------
+2️⃣ BASIC CONCEPTS
+---------------------------------------
+We use redirection operators and command substitution to log output.
+
+Examples:
+    echo "Starting..." >> logfile.txt
+    echo "$(date) - Starting" >> logfile.txt
+
+---------------------------------------
+3️⃣ FILE REDIRECTION FOR LOGS
+---------------------------------------
+command > logfile.txt   → store only stdout  
+command >> logfile.txt  → append  
+command 2> errors.txt   → store only stderr  
+command &> both.txt     → store both stdout + stderr
+
+---------------------------------------
+4️⃣ ADDING TIMESTAMPS
+---------------------------------------
+date +%Y-%m-%d_%H-%M-%S
+Use this to log time of event:
+    echo "$(date): Process started" >> logfile.txt
+
+---------------------------------------
+5️⃣ LOG LEVELS (like Python)
+---------------------------------------
+We can simulate logging levels manually.
+
+Example:
+    INFO="INFO"
+    ERROR="ERROR"
+    echo "$(date) [$INFO] Script started" >> log.txt
+
+---------------------------------------
+6️⃣ USING FUNCTIONS FOR LOGGING
+---------------------------------------
+Create a function to reuse:
+    log() {
+      echo "$(date '+%Y-%m-%d %H:%M:%S') [$1] $2" >> app.log
+    }
+
+    log "INFO" "Script started"
+    log "ERROR" "File not found"
+
+---------------------------------------
+7️⃣ ROTATING LOGS
+---------------------------------------
+To prevent large log files, rotate or archive them:
+    if [ -f app.log ]; then
+        mv app.log app_$(date +%Y%m%d_%H%M).log
+    fi
+
+---------------------------------------
+8️⃣ COMPARISON WITH PYTHON LOGGING
+---------------------------------------
+| Concept | Bash | Python |
+|----------|------|--------|
+| Write log | echo >> file | logging.info() |
+| Levels | Manual (INFO, ERROR) | Built-in (INFO, DEBUG, etc.) |
+| Timestamp | date command | formatter='%(asctime)s' |
+| Rotation | mv or rename | RotatingFileHandler |
+
+---------------------------------------
+✅ TIPS
+---------------------------------------
+• Always use timestamps.  
+• Separate error and info logs.  
+• Rotate logs for long-running scripts.  
+• Use “tee” to log and print simultaneously:
+     command | tee -a log.txt

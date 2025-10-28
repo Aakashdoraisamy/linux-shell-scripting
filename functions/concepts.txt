@@ -1,0 +1,76 @@
+======================================
+          FUNCTIONS IN BASH
+======================================
+
+Functions are blocks of reusable code that can be called anywhere in a script.
+
+---------------------------------------
+1️⃣ SYNTAX
+---------------------------------------
+function_name() {
+   commands
+}
+
+# or
+function function_name {
+   commands
+}
+
+---------------------------------------
+2️⃣ CALLING FUNCTION
+---------------------------------------
+function_name
+
+---------------------------------------
+3️⃣ PASSING ARGUMENTS
+---------------------------------------
+myfunc arg1 arg2
+Inside function → use $1, $2, etc.
+
+Example:
+function greet() {
+   echo "Hello, $1"
+}
+greet "Aakash"
+
+---------------------------------------
+4️⃣ RETURNING VALUES
+---------------------------------------
+return N   → returns numeric exit code (0–255)
+
+For string or number output:
+   echo result → capture using $( )
+
+Example:
+sum() {
+  echo $(( $1 + $2 ))
+}
+result=$(sum 10 20)
+echo "Sum: $result"
+
+---------------------------------------
+5️⃣ VARIABLE SCOPE
+---------------------------------------
+local var → variable visible only inside function
+
+---------------------------------------
+6️⃣ NESTED FUNCTIONS
+---------------------------------------
+Define one function inside another.
+
+---------------------------------------
+7️⃣ COMPARISON WITH PYTHON
+---------------------------------------
+| Concept | Bash | Python |
+|----------|------|--------|
+| Function define | func() { } | def func(): |
+| Arguments | $1, $2 | def func(a,b): |
+| Return value | echo result | return result |
+| Local variable | local x | local variable |
+
+---------------------------------------
+✅ Tips
+---------------------------------------
+• Always define functions before calling them.  
+• Use local variables to avoid conflicts.  
+• Functions improve readability and reusability.

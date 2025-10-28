@@ -1,0 +1,72 @@
+# Command Line Arguments — Linux vs Python
+
+## 1. What are Command Line Arguments?
+Command Line Arguments (CLAs) are inputs given to a script at the time of execution.
+They make scripts dynamic and reusable.
+
+Example:
+./myscript.sh input1 input2
+python3 script.py input1 input2
+
+---
+
+## 2. Linux (Bash) Command Line Arguments
+
+Special Variables:
+$0  → Script name
+$1  → First argument
+$2  → Second argument
+$#  → Total number of arguments
+$@  → All arguments as separate strings
+$*  → All arguments as one combined string
+"$@" → Recommended, preserves spaces properly
+shift → Used to move arguments left during iteration
+
+---
+
+## 3. Python Command Line Arguments
+
+Using `sys.argv`:
+- sys.argv is a list.
+- sys.argv[0] = script name
+- sys.argv[1:] = arguments
+
+Using `argparse`:
+- Advanced module for professional CLI tools
+- Handles flags, types, and help text automatically
+
+---
+
+## 4. Comparison: Bash vs Python
+
+| Feature | Bash | Python (sys.argv) | Python (argparse) |
+|----------|------|-------------------|-------------------|
+| Access   | $1, $2 | sys.argv[1], sys.argv[2] | args.name |
+| Script name | $0 | sys.argv[0] | Auto handled |
+| Data type | string | string | type-convertible |
+| Flags support | Manual | Manual | Built-in |
+| Validation | Manual | Manual | Automatic |
+| Ideal use | Shell automation | Small tools | Full CLI apps |
+
+---
+
+## 5. Core Concepts Inside This Topic
+- Positional parameters ($0, $1, $2, $#)
+- Loops using "$@"
+- The `shift` command
+- Handling missing arguments
+- Named and optional arguments
+- Input validation
+- Parsing key=value style arguments
+- Using sys.argv and argparse
+- Argument type conversion (e.g., int)
+- Handling errors and help messages
+
+---
+
+## 6. Real-World Applications
+- Bash automation scripts
+- DevOps tools
+- Data processing pipelines
+- Python command-line utilities (Flask, Django manage.py)
+- File operations or custom shell tools

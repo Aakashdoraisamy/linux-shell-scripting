@@ -1,0 +1,121 @@
+==========================
+      OPERATORS IN BASH
+==========================
+
+Operators are used to perform operations on variables and values in shell scripting.
+
+-------------------------
+1️⃣ Arithmetic Operators
+-------------------------
+Used to perform mathematical calculations.
+
+Syntax:
+    $(( expression )) or expr
+
+Common operators:
+    +   addition
+    -   subtraction
+    *   multiplication
+    /   division
+    %   modulus
+
+Example:
+    a=10; b=3
+    echo $((a + b))   # 13
+    echo $((a % b))   # 1
+
+-------------------------
+2️⃣ Relational Operators
+-------------------------
+Used to compare numbers (not strings).
+
+Syntax:
+    [ condition ]
+
+Operators:
+    -eq   equal to
+    -ne   not equal to
+    -gt   greater than
+    -lt   less than
+    -ge   greater than or equal to
+    -le   less than or equal to
+
+Example:
+    a=5; b=10
+    [ $a -lt $b ] && echo "a is less than b"
+
+-------------------------
+3️⃣ Logical Operators
+-------------------------
+Used to combine multiple conditions.
+
+Operators:
+    &&   Logical AND
+    ||   Logical OR
+    !    Logical NOT
+
+Example:
+    [ $a -lt 20 ] && [ $b -gt 5 ] && echo "Both conditions true"
+
+-------------------------
+4️⃣ String Operators
+-------------------------
+Used to compare and check string properties.
+
+Operators:
+    =     equal
+    !=    not equal
+    -z    string is null
+    -n    string is not null
+
+Example:
+    str="Aakash"
+    [ -n "$str" ] && echo "String is not empty"
+
+-------------------------
+5️⃣ File Test Operators
+-------------------------
+Used to test file properties.
+
+Operators:
+    -e file   file exists
+    -f file   regular file
+    -d dir    directory
+    -r file   readable
+    -w file   writable
+    -x file   executable
+
+Example:
+    [ -f myfile.txt ] && echo "File exists"
+
+-------------------------
+🔄 Arithmetic Evaluation Methods
+-------------------------
+1. Using $(( )) → preferred modern method
+2. Using expr   → older traditional method
+
+-------------------------
+🔁 Comparison with Python
+-------------------------
+| Concept | Bash Example | Python Equivalent |
+|----------|---------------|------------------|
+| Arithmetic | $((a+b)) | a + b |
+| Relational | [ $a -lt $b ] | if a < b: |
+| Logical | [ $a -lt 10 ] && [ $b -gt 5 ] | if a < 10 and b > 5: |
+| String | [ "$s" = "Hi" ] | if s == "Hi": |
+| File test | [ -f "test.txt" ] | if os.path.isfile("test.txt"): |
+
+-------------------------
+📚 Advanced Concepts
+-------------------------
+✅ Combine multiple operators in one condition  
+✅ Use arithmetic with if-else conditions  
+✅ File existence + logical operations together  
+
+-------------------------
+✅ Tips:
+-------------------------
+• Always quote variables inside [ ] to prevent errors.  
+• Use [[ ]] for complex conditions (modern Bash feature).  
+• Use `let`, `expr`, or `$(( ))` for arithmetic.  
+

@@ -1,0 +1,73 @@
+======================================
+           ARRAYS IN BASH
+======================================
+
+Arrays store multiple values in a single variable.
+
+Bash supports one-dimensional arrays (indexed) and associative arrays (key-value).
+
+---------------------------------------
+1️⃣ DECLARING ARRAYS
+---------------------------------------
+Syntax:
+    arr=(val1 val2 val3)
+
+Access element:
+    echo ${arr[0]}
+
+Access all:
+    echo ${arr[@]} or ${arr[*]}
+
+---------------------------------------
+2️⃣ ADDING ELEMENTS
+---------------------------------------
+arr[3]="new_value"
+arr+=("extra_value")
+
+---------------------------------------
+3️⃣ LENGTH OF ARRAY
+---------------------------------------
+echo ${#arr[@]}   → number of elements
+echo ${#arr[0]}   → length of first element string
+
+---------------------------------------
+4️⃣ ITERATING THROUGH ARRAY
+---------------------------------------
+for item in "${arr[@]}"
+do
+   echo $item
+done
+
+---------------------------------------
+5️⃣ INDEXES OF ARRAY
+---------------------------------------
+echo ${!arr[@]}   → prints all indexes
+
+---------------------------------------
+6️⃣ ASSOCIATIVE ARRAYS (key-value)
+---------------------------------------
+declare -A student
+student[name]="Aakash"
+student[roll]=101
+student[dept]="ECE"
+
+echo ${student[name]}
+echo ${!student[@]} → keys
+echo ${student[@]}  → values
+
+---------------------------------------
+7️⃣ COMPARISON WITH PYTHON
+---------------------------------------
+| Concept | Bash | Python |
+|----------|------|--------|
+| Array | arr=(1 2 3) | arr = [1,2,3] |
+| Access | ${arr[0]} | arr[0] |
+| Loop | for i in "${arr[@]}" | for i in arr: |
+| Associative | declare -A arr | dict = {} |
+
+---------------------------------------
+✅ Tips
+---------------------------------------
+• Always quote "${arr[@]}" to preserve spaces.  
+• Associative arrays work only in Bash ≥ 4.0.  
+• Use indexes carefully (start from 0).  

@@ -1,0 +1,69 @@
+======================================
+         FILE HANDLING IN BASH
+======================================
+
+File handling involves creating, reading, writing, appending, and managing files using shell scripts.
+
+---------------------------------------
+1️⃣ CREATE & WRITE FILE
+---------------------------------------
+Use redirection operators:
+   >   → create or overwrite
+   >>  → append
+
+Example:
+echo "Hello" > file.txt
+echo "World" >> file.txt
+
+---------------------------------------
+2️⃣ READ FILE LINE BY LINE
+---------------------------------------
+while read line
+do
+   echo $line
+done < filename
+
+---------------------------------------
+3️⃣ CHECK FILE EXISTENCE
+---------------------------------------
+if [ -f file.txt ]; then
+   echo "Exists"
+fi
+
+---------------------------------------
+4️⃣ COPY / MOVE / DELETE
+---------------------------------------
+cp source dest
+mv old new
+rm file.txt
+
+---------------------------------------
+5️⃣ COUNT CONTENTS
+---------------------------------------
+wc -l file.txt → line count  
+wc -w file.txt → word count  
+wc -c file.txt → byte count
+
+---------------------------------------
+6️⃣ REDIRECTION
+---------------------------------------
+command > file.txt → output to file  
+command >> file.txt → append output  
+command < file.txt → input from file
+
+---------------------------------------
+7️⃣ COMPARISON WITH PYTHON
+---------------------------------------
+| Operation | Bash | Python |
+|------------|------|--------|
+| Write | echo > | open(...,'w') |
+| Append | >> | open(...,'a') |
+| Read | while read line | open(...).read() |
+| Delete | rm | os.remove() |
+
+---------------------------------------
+✅ Tips
+---------------------------------------
+• Always check file existence before using it.  
+• Combine with loops for reading large files.  
+• Redirect output safely using “>>” for logs.  

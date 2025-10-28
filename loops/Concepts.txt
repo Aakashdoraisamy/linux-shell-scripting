@@ -1,0 +1,150 @@
+======================================
+            LOOPS IN BASH
+======================================
+
+Loops are used to execute a block of code repeatedly as long as a condition is true.
+
+Bash supports 3 main types of loops:
+1️⃣ for loop
+2️⃣ while loop
+3️⃣ until loop
+
+Also includes control statements:
+   break → exit loop
+   continue → skip to next iteration
+
+---------------------------------------
+1️⃣ FOR LOOP
+---------------------------------------
+Used when the number of iterations is known.
+
+Syntax:
+for variable in list
+do
+   commands
+done
+
+Example:
+for i in 1 2 3 4 5
+do
+   echo "Number: $i"
+done
+
+Using C-style syntax:
+for (( i=1; i<=5; i++ ))
+do
+   echo "i = $i"
+done
+
+Iterating through files:
+for file in *.txt
+do
+   echo "Processing $file"
+done
+
+---------------------------------------
+2️⃣ WHILE LOOP
+---------------------------------------
+Runs as long as the condition is TRUE.
+
+Syntax:
+while [ condition ]
+do
+   commands
+done
+
+Example:
+count=1
+while [ $count -le 5 ]
+do
+   echo "Count: $count"
+   ((count++))
+done
+
+---------------------------------------
+3️⃣ UNTIL LOOP
+---------------------------------------
+Opposite of while — runs until condition becomes TRUE.
+
+Syntax:
+until [ condition ]
+do
+   commands
+done
+
+Example:
+x=1
+until [ $x -gt 5 ]
+do
+   echo "x = $x"
+   ((x++))
+done
+
+---------------------------------------
+4️⃣ NESTED LOOPS
+---------------------------------------
+One loop inside another.
+
+Example:
+for i in 1 2 3
+do
+   for j in a b c
+   do
+      echo "$i $j"
+   done
+done
+
+---------------------------------------
+5️⃣ CONTROL STATEMENTS
+---------------------------------------
+break → exits loop completely  
+continue → skips to next iteration  
+
+Example:
+for i in {1..5}
+do
+  if [ $i -eq 3 ]; then
+     continue
+  fi
+  echo $i
+done
+
+---------------------------------------
+6️⃣ LOOP + CASE MENU (Practical Use)
+---------------------------------------
+Used for creating interactive shell menus.
+
+Example:
+while true
+do
+  echo "1. Show Date"
+  echo "2. Show Current Dir"
+  echo "3. Exit"
+  read -p "Enter choice: " c
+  case $c in
+     1) date ;;
+     2) pwd ;;
+     3) break ;;
+     *) echo "Invalid" ;;
+  esac
+done
+
+---------------------------------------
+🔁 COMPARISON WITH PYTHON
+---------------------------------------
+| Concept | Bash | Python |
+|----------|------|--------|
+| for loop | for i in {1..5}; do ...; done | for i in range(1,6): |
+| while loop | while [ $i -le 5 ]; do ...; done | while i <= 5: |
+| until loop | until [ $i -gt 5 ]; do ...; done | while not (i > 5): |
+| break | break | break |
+| continue | continue | continue |
+
+---------------------------------------
+✅ TIPS:
+---------------------------------------
+• Always increment counters manually in while/until loops.  
+• Prefer `for (( ))` for numeric iteration.  
+• Use `{1..N}` for sequence generation.  
+• `while read line` is useful for reading files line-by-line.  
+• Combine with case and file conditions for automation scripts.  

@@ -1,0 +1,119 @@
+===========================================
+        ERROR HANDLING IN BASH
+===========================================
+
+Error handling means detecting, handling, and responding to failures that occur during script execution.
+
+In Bash, errors are typically identified using:
+  • Exit codes ($?)
+  • 'set' options (strict modes)
+  • 'trap' command
+  • Logging + conditional checks
+
+-------------------------------------------
+1️⃣ EXIT STATUS ($?)
+-------------------------------------------
+Every command in Linux returns an exit code:
+  0 → success
+  non-zero → failure
+
+Example:
+  ls /fakepath
+  echo $?
+
+If $?>0 → means an error occurred.
+
+-------------------------------------------
+2️⃣ USING IF CONDITIONS FOR ERROR CHECK
+-------------------------------------------
+We can handle errors by checking exit status immediately after command execution.
+
+Syntax:
+  if [ $? -ne 0 ]; then
+      echo "Error occurred"
+  fi
+
+Better:
+  if command; then
+      echo "Success"
+  else
+      echo "Failed"
+  fi
+
+-------------------------------------------
+3️⃣ USING 'set' OPTIONS
+-------------------------------------------
+These control how the script behaves on errors:
+
+| Option | Meaning |
+|---------|----------|
+| set -e | Exit script immediately if any command fails |
+| set -u | Exit if an undefined variable is used |
+| set -o pipefail | Treat a pipeline as failed if any part fails |
+
+Example:
+  set -euo pipefail
+
+-------------------------------------------
+4️⃣ TRAP COMMAND
+-------------------------------------------
+'trap' allows you to catch signals and execute custom cleanup or logging code.
+
+Syntax:
+  trap 'commands' SIGNAL
+
+Example:
+  trap 'echo "Script interrupted! Cleaning up..."' SIGINT SIGTERM
+
+Common signals:
+  SIGINT  → Ctrl + C
+  SIGTERM → Termination
+  EXIT    → Executes when script ends (success/failure)
+
+-------------------------------------------
+5️⃣ SIMULATING TRY-CATCH IN BASH
+-------------------------------------------
+Bash doesn’t have try-catch like Python, but we can simulate it.
+
+Example:
+  {
+    command_that_may_fail
+  } || {
+    echo "Error caught!"
+  }
+
+-------------------------------------------
+6️⃣ LOGGING ERRORS
+-------------------------------------------
+Redirect errors using:
+  command 2>> error.log
+
+Combine with functions for structured logging.
+
+-------------------------------------------
+7️⃣ EXITING WITH CUSTOM CODES
+-------------------------------------------
+Use 'exit N' to exit with a custom code.
+Example:
+  exit 2  → means a specific type of failure.
+
+-------------------------------------------
+8️⃣ COMPARISON WITH PYTHON
+-------------------------------------------
+| Concept | Bash | Python |
+|----------|------|--------|
+| Exit status | $? | Exception raised |
+| try-catch | { cmd; } || { ... } | try: except: |
+| set -e | auto-exit on error | no direct equivalent |
+| trap | signal handlers | signal module |
+| Logging | echo + redirect | logging.error() |
+
+-------------------------------------------
+✅ BEST PRACTICES
+-------------------------------------------
+✔ Always check for command success  
+✔ Combine with logging  
+✔ Use 'set -euo pipefail' for robust scripts  
+✔ Use 'trap' for cleanup before exit  
+✔ Separate success & error logs  
+✔ Test with wrong inputs intentionally
