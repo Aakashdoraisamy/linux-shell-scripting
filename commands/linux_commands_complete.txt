@@ -1,0 +1,406 @@
+# Generate a detailed Linux commands guide in text format
+
+linux_commands_text = """\
+============================================================
+LINUX COMMANDS COMPLETE GUIDE (BASIC → ADVANCED)
+============================================================
+
+Each section covers essential commands with syntax and examples.
+
+------------------------------------------------------------
+1. Command: echo
+------------------------------------------------------------
+Description:
+  Displays a line of text or variable value on the terminal.
+
+Syntax:
+  echo [string]
+
+Example:
+  $ echo "Hello World"
+  Output: Hello World
+
+------------------------------------------------------------
+2. Command: pwd
+------------------------------------------------------------
+Description:
+  Prints the current working directory path.
+
+Syntax:
+  pwd
+
+Example:
+  $ pwd
+  Output: /home/aakash
+
+------------------------------------------------------------
+3. Command: ls
+------------------------------------------------------------
+Description:
+  Lists files and directories in the current location.
+
+Syntax:
+  ls [options] [directory]
+
+Examples:
+  $ ls
+  file1.txt  folder1  notes.txt
+
+  $ ls -l
+  -rw-r--r-- 1 user user  1200 Nov 10  notes.txt
+
+  $ ls -a
+  .  ..  .bashrc  file.txt
+
+------------------------------------------------------------
+4. Command: cd
+------------------------------------------------------------
+Description:
+  Changes the current directory.
+
+Syntax:
+  cd [directory]
+
+Examples:
+  $ cd Documents
+  $ cd ..      # move up one level
+  $ cd /home   # go to absolute path
+
+------------------------------------------------------------
+5. Command: mkdir
+------------------------------------------------------------
+Description:
+  Creates a new directory.
+
+Syntax:
+  mkdir [directory_name]
+
+Example:
+  $ mkdir projects
+
+------------------------------------------------------------
+6. Command: rmdir
+------------------------------------------------------------
+Description:
+  Removes an empty directory.
+
+Syntax:
+  rmdir [directory_name]
+
+Example:
+  $ rmdir old_folder
+
+------------------------------------------------------------
+7. Command: touch
+------------------------------------------------------------
+Description:
+  Creates an empty file or updates the timestamp of an existing file.
+
+Syntax:
+  touch [filename]
+
+Example:
+  $ touch newfile.txt
+
+------------------------------------------------------------
+8. Command: cat
+------------------------------------------------------------
+Description:
+  Displays contents of a file, concatenates multiple files, or creates a new file.
+
+Syntax:
+  cat [options] [file]
+
+Examples:
+  $ cat notes.txt
+  $ cat file1.txt file2.txt > combined.txt
+
+------------------------------------------------------------
+9. Command: cp
+------------------------------------------------------------
+Description:
+  Copies files or directories.
+
+Syntax:
+  cp [options] source destination
+
+Examples:
+  $ cp file1.txt backup/
+  $ cp -r folder1/ folder2/
+
+------------------------------------------------------------
+10. Command: mv
+------------------------------------------------------------
+Description:
+  Moves or renames files and directories.
+
+Syntax:
+  mv [source] [destination]
+
+Examples:
+  $ mv oldname.txt newname.txt
+  $ mv file.txt /home/user/Documents/
+
+------------------------------------------------------------
+11. Command: rm
+------------------------------------------------------------
+Description:
+  Removes (deletes) files or directories.
+
+Syntax:
+  rm [options] [file]
+
+Examples:
+  $ rm file.txt
+  $ rm -r old_folder
+
+------------------------------------------------------------
+12. Command: head
+------------------------------------------------------------
+Description:
+  Displays the first 10 lines of a file (default).
+
+Syntax:
+  head [options] [file]
+
+Example:
+  $ head data.txt
+
+------------------------------------------------------------
+13. Command: tail
+------------------------------------------------------------
+Description:
+  Displays the last 10 lines of a file or continuously monitors changes.
+
+Syntax:
+  tail [options] [file]
+
+Examples:
+  $ tail logfile.txt
+  $ tail -f /var/log/syslog
+
+------------------------------------------------------------
+14. Command: grep
+------------------------------------------------------------
+Description:
+  Searches for a text pattern in files.
+
+Syntax:
+  grep [pattern] [file]
+
+Examples:
+  $ grep "error" logfile.txt
+  $ grep -r "python" /home/user/projects
+
+------------------------------------------------------------
+15. Command: find
+------------------------------------------------------------
+Description:
+  Searches for files and directories in a hierarchy.
+
+Syntax:
+  find [path] [expression]
+
+Examples:
+  $ find /home -name "*.txt"
+  $ find . -type d
+
+------------------------------------------------------------
+16. Command: chmod
+------------------------------------------------------------
+Description:
+  Changes file permissions.
+
+Syntax:
+  chmod [permissions] [file]
+
+Examples:
+  $ chmod 755 script.sh
+  $ chmod u+x test.sh
+
+------------------------------------------------------------
+17. Command: chown
+------------------------------------------------------------
+Description:
+  Changes file owner and group.
+
+Syntax:
+  chown [user]:[group] [file]
+
+Example:
+  $ sudo chown root:root secure.txt
+
+------------------------------------------------------------
+18. Command: df
+------------------------------------------------------------
+Description:
+  Displays disk space usage.
+
+Syntax:
+  df [options]
+
+Examples:
+  $ df -h
+  Filesystem  Size  Used Avail Use% Mounted on
+  /dev/sda1   40G   20G   18G  53% /
+
+------------------------------------------------------------
+19. Command: du
+------------------------------------------------------------
+Description:
+  Estimates file or directory space usage.
+
+Syntax:
+  du [options] [path]
+
+Examples:
+  $ du -sh *
+  1.2G  Downloads
+  320M  Documents
+
+------------------------------------------------------------
+20. Command: ps
+------------------------------------------------------------
+Description:
+  Displays running processes.
+
+Syntax:
+  ps [options]
+
+Examples:
+  $ ps
+  PID TTY TIME CMD
+  2014 pts/0 00:00:00 bash
+  2040 pts/0 00:00:00 ps
+
+  $ ps aux | grep python
+
+------------------------------------------------------------
+21. Command: top
+------------------------------------------------------------
+Description:
+  Displays dynamic real-time view of running processes.
+
+Syntax:
+  top
+
+Example:
+  $ top
+
+------------------------------------------------------------
+22. Command: kill
+------------------------------------------------------------
+Description:
+  Terminates a process by PID.
+
+Syntax:
+  kill [PID]
+
+Example:
+  $ kill 2021
+
+------------------------------------------------------------
+23. Command: ping
+------------------------------------------------------------
+Description:
+  Checks network connectivity to a host.
+
+Syntax:
+  ping [hostname or IP]
+
+Example:
+  $ ping google.com
+
+------------------------------------------------------------
+24. Command: ifconfig / ip addr
+------------------------------------------------------------
+Description:
+  Displays or configures network interfaces.
+
+Syntax:
+  ifconfig
+  ip addr
+
+Examples:
+  $ ifconfig
+  $ ip addr show eth0
+
+------------------------------------------------------------
+25. Command: ssh
+------------------------------------------------------------
+Description:
+  Connects to a remote machine securely.
+
+Syntax:
+  ssh [user]@[host]
+
+Example:
+  $ ssh user@192.168.1.10
+
+------------------------------------------------------------
+26. Command: scp
+------------------------------------------------------------
+Description:
+  Copies files between systems over SSH.
+
+Syntax:
+  scp [source] [user@host:destination]
+
+Example:
+  $ scp file.txt user@192.168.1.10:/home/user/
+
+------------------------------------------------------------
+27. Command: tar
+------------------------------------------------------------
+Description:
+  Archives files into tar format.
+
+Syntax:
+  tar [options] [archive_name] [files]
+
+Examples:
+  $ tar -cvf archive.tar folder/
+  $ tar -xvf archive.tar
+
+------------------------------------------------------------
+28. Command: gzip / gunzip
+------------------------------------------------------------
+Description:
+  Compresses and decompresses files.
+
+Examples:
+  $ gzip data.txt
+  $ gunzip data.txt.gz
+
+------------------------------------------------------------
+29. Command: uname
+------------------------------------------------------------
+Description:
+  Displays system information.
+
+Syntax:
+  uname -a
+
+Example:
+  $ uname -a
+  Linux ubuntu 5.15.0 x86_64 GNU/Linux
+
+------------------------------------------------------------
+30. Command: sudo
+------------------------------------------------------------
+Description:
+  Executes commands as another user (typically root).
+
+Example:
+  $ sudo apt update
+
+------------------------------------------------------------
+... [More advanced commands continue up to networking, systemctl, firewall, etc.]
+"""
+
+# Save the text content as a .txt file
+file_path = "/mnt/data/linux_commands_complete.txt"
+with open(file_path, "w") as f:
+    f.write(linux_commands_text)
+
+file_path
